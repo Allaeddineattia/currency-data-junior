@@ -1,0 +1,37 @@
+.input {
+    color: red;
+    display: inline-block;
+    border:  solid  black;
+    position: absolute;
+    margin: 4rem 0rem 0rem 1rem ;
+    height: 4rem;
+    width: 10vw;
+}
+.output {
+    display: inline-block;
+    border:  solid  black;
+    position: absolute;
+    margin: 4rem 0rem 0rem 15rem;
+    height: 4rem;
+    width: 20vw;
+}
+
+.output div {
+    display: inline-block;
+    position: relative;
+    padding: 0rem 0rem;
+    margin: 0rem 0rem
+}
+
+.container {
+    border:  solid  black;
+    border-radius:  10% ;
+    background-color:    #f4f4f8;
+    display: block;
+    width: 40vw;
+    position: absolute;
+    height: 15rem;      
+    margin: 5rem 25vw;      
+    padding: 1rem 1vw ;
+    
+}
