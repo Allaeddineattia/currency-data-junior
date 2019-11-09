@@ -9,31 +9,41 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get '/' do
-		@source = params["source"]
-
+		@source = 1
    		erb :index
 	end
 
-	get 'convert' do 
+	get '/convert/' do 
+		@amount = params["amount"]
+		@from = params["From"]
+		@to = params["To"]
+		begin
+			@result = convert(@amount.to_f, @from, @to)
+			@output = @amount and @from and @result and @to
+			erb :index
+		rescue
+			@source = 1
+			@output = false
+			erb :index
+		end 
+
+		
 	end
 
 	post '/' do
 		@amount = params['amount'].to_f
 		if(@amount == 0)
-			redirect "/?value=please give a valide float"
+			@amount = 1
 		end
 		@inputCur = params['inputcur']
 		@outputCur = params['outputcur'] 
 		@output = convert(@amount, @inputCur, @outputCur)
-		redirect "/?source=#{@amount}&sourcecur#{@inputCur}&destination=#{@output}&outputcur=#{@outputCur}"
+		redirect "/convert/?amount=#{@amount}&From=#{@inputCur}&To=#{@outputCur}"
 	end
 	get '/result' do 
+		@transactions = getAllTransactions
+		p @transactions
 		erb :result
-	end
-
-	get '/test' do
-		@newTransaction = create("EUR",5 ,'USD', 4)
-		p(@newTransaction.sourceValue.to_s)
 	end
 
 	

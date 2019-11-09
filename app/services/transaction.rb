@@ -27,7 +27,10 @@ module TransactionService
     end
 
     def getAllTransactions 
-        Transaction.all
+        p 'dkhal'
+        transactions =  Transaction.all
+        p (transactions)
+        return transactions
     end
     def sabouna 
         p("sabouna")

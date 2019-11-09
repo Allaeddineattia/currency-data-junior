@@ -8,7 +8,7 @@
 			<div class="row">
 				<form action="/" method="post">
 						<div class="input">
-							<input type="text" name="amount" ></input>
+							<input type="text" name="amount" value="<%= @source %>" ></input>
 						</div>
 						<div class="output">
 							<div class="source">
@@ -33,7 +33,11 @@
 						</div>
 				</form>
 				<% if @output %>
-				<p> <%= @output%> </p>
+				
+				<p> <%= @amount %> </p> 
+				<p> <%= @from %> </p>
+				<p> <%= @result %> </p> 
+				<p> <%= @to %> </p>
 				<% end %>
 			</div>
 			

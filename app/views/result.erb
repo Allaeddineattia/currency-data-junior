@@ -7,6 +7,18 @@
     <title>Document</title>
 </head>
 <body>
-    heh result
+    <ul>
+    <% @transactions.each do |transaction| %>
+        <li>
+        date time: <%= transaction.date.to_s %> | 
+        <%= transaction.sourceValue%> <%= transaction.sourceCurrence%> to
+        <%= transaction.destinationValue%> <%= transaction.destinationCurrence%> 
+        
+        </li>
+        
+    <% end %>
+    </ul>
+    
+
 </body>
 </html>
