@@ -6,22 +6,20 @@
 	<body>
 		<div class="container">
 			<div class="row">
-					<div class="input">
-
+				<form action="/" method="post">
+						<div class="input">
+							<input type="text" name="amount" ></input>
 						</div>
 						<div class="output">
 							<div class="source">
-								<select name="inputcur" id="">
+								<select name="inputcur"  >
 									<option value="EUR">EUR</option>
 									<option value="USD">USD</option>
 									<option value="CHF">CHF</option>
 								</select>
 							</div>
-							<div class="switch">
-								<button>switch</button>
-							</div>
 							<div class="result">
-									<select name="outputcur" id="">
+									<select name="outputcur">
 											<option value="EUR">EUR</option>
 											<option value="USD">USD</option>
 											<option value="CHF">CHF</option>
@@ -29,9 +27,14 @@
 			
 							</div>
 							<div class="apply">
-			
+								<button type="submit">submit </button>
+								
 							</div>
 						</div>
+				</form>
+				<% if @output %>
+				<p> <%= @output%> </p>
+				<% end %>
 			</div>
 			
 		</div>
