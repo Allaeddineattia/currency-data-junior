@@ -7,39 +7,70 @@
 		<div class="container">
 			<div class="row">
 				<form action="/" method="post">
-						<div class="input">
-							<input type="text" name="amount" value="<%= @source %>" ></input>
-						</div>
-						<div class="output">
-							<div class="source">
-								<select name="inputcur"  >
-									<option value="EUR">EUR</option>
-									<option value="USD">USD</option>
-									<option value="CHF">CHF</option>
-								</select>
-							</div>
-							<div class="result">
-									<select name="outputcur">
-											<option value="EUR">EUR</option>
-											<option value="USD">USD</option>
-											<option value="CHF">CHF</option>
-										</select>
-			
-							</div>
-							<div class="apply">
-								<button type="submit">submit </button>
-								
-							</div>
-						</div>
+					<div class="input">
+						<p>Amount</p>
+						<input type="text" name="amount" value="<%= @amount %>" ></input>
+					</div>
+					<div class="source">
+						<p>From</p>
+						<select name="inputcur" >
+							<% @currencies.each do |currency| %>
+								<% if (currency==@from)%>
+								<option value="<%= currency%>" selected  ><%= currency%></option>
+								<% else%>
+								<option value="<%= currency%>"  ><%= currency%></option>
+								<% end%>
+							<% end%>
+
+						</select>
+					</div>
+					<div class="source">
+							<p>To</p>
+							<select name="outputcur" >
+								<% @currencies.each do |currency| %>
+									<% if (currency==@to)%>
+									<option value="<%= currency%>" selected  ><%= currency%></option>
+									<% else%>
+									<option value="<%= currency%>"  ><%= currency%></option>
+									<% end%>
+							<% end%>
+							</select>
+	
+					</div>
+					<div class="apply">
+						<button type="submit">submit </button>
+					</div>
+					</div>
 				</form>
 				<% if @output %>
-				
-				<p> <%= @amount %> </p> 
-				<p> <%= @from %> </p>
-				<p> <%= @result %> </p> 
-				<p> <%= @to %> </p>
+				<div class="result">
+						<div class="from">
+							<p class="value">
+								<%= @amount%>
+							</p>
+							<p class="currency">
+								<%= @from %>
+							</p>
+						</div>
+						<div class="to">
+							<p class='value'>=</p>
+						</div>
+						<div class="destination">
+							<p class="value">
+								<%= @result%>
+							</p>
+							<p class="currency">
+								<%= @to%>
+							</p>
+			
+						</div>
+				</div>
 				<% end %>
+				<div class='resultLink'>
+					<a href='/result/'> results</a>
+				</div>
 			</div>
+			
 			
 		</div>
 		

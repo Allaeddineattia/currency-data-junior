@@ -1,0 +1,77 @@
+.transaction {
+    display: inline-block;
+    margin: 2rem;
+    border: 0.2rem none ;
+    width: 15rem;
+    height: 11rem;
+    text-align: center;
+    border: 0.1rem solid ;
+    border-color: #FE6464;
+    border-radius: 25px 25px 25px 25px;
+    color: gray;
+    background-color: white;
+
+}
+
+.transactions{
+    display: block;
+    height: 48rem;
+    width: 82rem;
+    margin: 2rem 10vw 0rem 10vw;
+    background-color: #ebebeb;
+    border: 0.3rem solid ;
+    border-color: #FE6464;
+    border-radius: 25px 25px 25px 25px;
+    
+}
+p {
+    display: inline-block;
+    margin: 0%;
+
+}
+.source {
+    margin: 1rem 0rem 0rem 0rem ;
+}
+.value{
+    font-size: 1.5rem;
+}
+
+.currency{
+    font-size: 0.8rem
+}
+
+.destination{
+    margin: 0.5rem 0rem 0rem 0rem;
+}
+
+.to{
+    margin: 0.5rem 0rem 0rem 0rem;
+}
+.to p{
+    font-size:0.9rem
+}
+
+.date {
+    margin: 1rem 0rem 0rem 0rem;
+}
+
+button {
+    background: #ebebeb;
+    border: none;
+    color: #FE6464;
+    padding: 0.5rem;
+    width: 5rem;
+    font-size: 1rem;
+    border-radius: 25px 25px 25px 25px;
+}
+button:hover{
+    background: #FE6464;
+    color: white;
+}
+
+.footer {
+    width: 82rem;
+    margin: 2rem 10vw;
+    text-align: center;
+}
+

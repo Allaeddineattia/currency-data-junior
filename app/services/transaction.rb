@@ -27,13 +27,20 @@ module TransactionService
     end
 
     def getAllTransactions 
-        p 'dkhal'
-        transactions =  Transaction.all
-        p (transactions)
-        return transactions
+        @transactions =  Transaction.all
+        return @transactions
     end
-    def sabouna 
-        p("sabouna")
+
+    def getTransactionsByPage page
+        @limit = 12
+        @offset = (page.to_i - 1) * @limit
+        @transactions = Transaction.all(:offset => @offset, :limit => @limit, :order => [ :date.desc ])
+        return @transactions
+    end    
+    
+    def getAvaibleCurrencies 
+        return ["EUR","USD","CHF"]
     end
+
 
 end

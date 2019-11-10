@@ -9,11 +9,27 @@ class ApplicationController < Sinatra::Base
 	end
 
 	get '/' do
-		@source = 1
+		@currencies = getAvaibleCurrencies
+		@amount = 1
+		@from = "EUR"
+		@to = "EUR"
+		@result = 1
+		@output = @amount and @from and @result and @to
    		erb :index
 	end
 
+	get '/test' do
+		@currencies = getAvaibleCurrencies
+		@amount = "1"
+		@from = "EUR"
+		@to = "USD"
+		@result = 0.9
+		@output = @amount and @from and @result and @to
+		erb :index
+	end
+
 	get '/convert/' do 
+		@currencies = getAvaibleCurrencies
 		@amount = params["amount"]
 		@from = params["From"]
 		@to = params["To"]
@@ -22,7 +38,10 @@ class ApplicationController < Sinatra::Base
 			@output = @amount and @from and @result and @to
 			erb :index
 		rescue
-			@source = 1
+			@amount = 1
+			@from = "EUR"
+			@to = "EUR"
+			@result = 1
 			@output = false
 			erb :index
 		end 
@@ -37,12 +56,22 @@ class ApplicationController < Sinatra::Base
 		end
 		@inputCur = params['inputcur']
 		@outputCur = params['outputcur'] 
-		@output = convert(@amount, @inputCur, @outputCur)
 		redirect "/convert/?amount=#{@amount}&From=#{@inputCur}&To=#{@outputCur}"
 	end
-	get '/result' do 
-		@transactions = getAllTransactions
-		p @transactions
+
+	get '/result/' do
+		@page = params['page'].to_i
+		if(@page == 0)
+			@page = 1
+		end
+		@transactions = getTransactionsByPage(@page)
+		if (@transactions.empty?)
+			p 'dkhal'
+			if (@page==1)
+				return erb :result
+			end
+			redirect 'result/?page=1'
+		end
 		erb :result
 	end
 

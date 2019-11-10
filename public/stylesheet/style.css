@@ -1,37 +1,144 @@
-.input {
-    color: red;
-    display: inline-block;
-    border:  solid  black;
-    position: absolute;
-    margin: 4rem 0rem 0rem 1rem ;
-    height: 4rem;
-    width: 10vw;
-}
-.output {
-    display: inline-block;
-    border:  solid  black;
-    position: absolute;
-    margin: 4rem 0rem 0rem 15rem;
-    height: 4rem;
-    width: 20vw;
-}
-
-.output div {
-    display: inline-block;
-    position: relative;
-    padding: 0rem 0rem;
-    margin: 0rem 0rem
-}
-
 .container {
-    border:  solid  black;
-    border-radius:  10% ;
-    background-color:    #f4f4f8;
+    border:  solid #FE6464;
+    border-radius:  25px ;
+    background-color: #ebebeb;
     display: block;
-    width: 40vw;
+    width: 60rem;
     position: absolute;
-    height: 15rem;      
+    height: 23rem;      
     margin: 5rem 25vw;      
     padding: 1rem 1vw ;
     
+}
+.row{
+    margin: 4rem 0rem 3rem 0rem;
+    box-sizing: border-box;
+}
+.input {
+    display: inline-block;
+    height: 3rem;
+    margin: 0rem 1.5rem 0rem 1rem ;
+    width: 10rem;
+    vertical-align: top;
+
+}
+.input input {
+    display: inline-block;
+    border:  0.04rem solid  red;
+    position: relative;
+    margin: 0rem 0rem 0rem 0rem ;
+    padding: 0.4rem;
+    height: 100%;
+    font-size: 1.5rem;
+    box-sizing: border-box;
+    border-radius:  11px ;
+    width: 92%;
+}
+
+ p{
+     display: inline-block;
+     margin: 0rem 0rem 0rem 0.6rem;
+ }
+.source{
+    display: inline-block;
+    position: relative;
+    border:  none;
+    vertical-align: top;
+    margin: 0rem 0rem 0rem 2rem;
+    height: 3rem;
+    width: 10vw;
+    box-sizing: border-box;
+}
+.source select{
+    position: relative;
+    border:  none;
+    vertical-align: top;
+    margin: 0rem 0rem 0rem 0rem;
+    padding: 0rem 0rem 0rem 4rem ;
+    height: 100%;
+    width: 100%;
+    box-sizing: border-box;
+    border-radius:  11px ;
+}
+
+.apply{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin: 1rem 0rem 0rem 6rem;
+    height: 3rem;
+    width: 5vw;
+	box-shadow: none;
+    box-sizing: border-box;
+}
+
+.apply button{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin: 0rem 0rem 0rem 0rem;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: white;
+    color: #FE6464;
+    box-sizing: border-box;
+    border-radius:  11px ;
+}
+.apply button:hover{
+    display: inline-block;
+    position: relative;
+    vertical-align: top;
+    margin: 0rem 0rem 0rem 0rem;
+    height: 100%;
+    width: 100%;
+    border: none;
+    background: #FE6464;
+    color: white;
+    box-sizing: border-box;
+    border-radius:  11px ;
+}
+
+
+
+
+.result {
+    position: relative;
+    border-radius:  25px ;;
+    border: none;
+    margin: 0rem 3rem 0rem 21rem;
+    padding: 1rem 1rem 1rem 1rem; 
+    width: 10rem;
+    background-color: white;
+    color: gray
+}
+
+.result p{
+    margin: 0rem;
+}
+
+.result div {
+    display: block;
+    text-align: center;
+}
+
+.result .from .value{
+    font-size: 2rem;
+    margin:0;
+}
+
+.result .destination .value{
+    font-size: 4rem;
+    margin:0;
+    color: black
+}
+
+a{
+    color: #FE6464;
+    text-align: center;
+    font-size: 1.2rem;
+}
+.resultLink{
+    
+    margin: 0.5rem 0rem 0rem 25rem
 }

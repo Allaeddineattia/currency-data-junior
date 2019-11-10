@@ -4,20 +4,56 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" type='text/css' href="/stylesheet/resultStyle.css">
     <title>Document</title>
 </head>
 <body>
-    <ul>
-    <% @transactions.each do |transaction| %>
-        <li>
-        date time: <%= transaction.date.to_s %> | 
-        <%= transaction.sourceValue%> <%= transaction.sourceCurrence%> to
-        <%= transaction.destinationValue%> <%= transaction.destinationCurrence%> 
+    <div class="footer"> 
+        <a href="/" class="homeBtn"> <button > home</button> </a>
+        <a href="?page=<%=(@page.to_i - 1)%>"> <button > previous</button> </a>
+        page <%= @page %> 
+        <a href="?page=<%=(@page.to_i + 1)%>"> <button > next</button> </a>
         
-        </li>
-        
-    <% end %>
-    </ul>
+    </div>
+    <div class="transactions">
+        <% @transactions.each do |transaction| %>
+        <div class="transaction">
+            <div class="date">
+                <%= transaction.date.strftime('%a %d %b %Y')%>      
+            </div>
+            <div class="time">
+                <%= transaction.date.strftime('%H:%M:%S') %>
+            </div>
+            <div class="source">
+                <p class="value">
+                    <%= transaction.sourceValue%>
+                </p>
+                <p class="currency">
+                    <%= transaction.sourceCurrence%>
+                </p>
+            </div>
+            <div class="to">
+                <p class='value'>to</p>
+            </div>
+            <div class="destination">
+                <p class="value">
+                    <%= transaction.destinationValue%>
+                </p>
+                <p class="currency">
+                    <%= transaction.destinationCurrence%>
+                </p>
+
+            </div>
+        </div>
+        <% end %>
+    </div>
+    <div class="footer"> 
+
+        <a href="?page=<%=(@page.to_i - 1)%>"> <button > previous</button> </a>
+        page <%= @page %> 
+        <a href="?page=<%=(@page.to_i + 1)%>"> <button > next</button> </a>
+    </div>
+    
     
 
 </body>
