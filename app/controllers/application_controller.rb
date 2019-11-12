@@ -1,4 +1,3 @@
-# For the documentation check http://sinatrarb.com/intro.html
 class ApplicationController < Sinatra::Base
 	# This configuration part will inform the app where to search for the views and from where it will serve the static files
 	require_relative '../services/transaction.rb'
@@ -6,6 +5,16 @@ class ApplicationController < Sinatra::Base
 	configure do
     	set :views, "app/views"
     	set :public_dir, "public"
+	end
+
+	def checkConversionParams (amount, form, to) 
+		if(amount <= 0)
+			return false 
+		end
+		@currencies = getAvaibleCurrencies
+		if (! @currencies.include?(form)) then return false end
+		if (! @currencies.include?(to)) then return false end
+		return true
 	end
 
 	get '/' do
@@ -18,23 +27,15 @@ class ApplicationController < Sinatra::Base
    		erb :index
 	end
 
-	get '/test' do
-		@currencies = getAvaibleCurrencies
-		@amount = "1"
-		@from = "EUR"
-		@to = "USD"
-		@result = 0.9
-		@output = @amount and @from and @result and @to
-		erb :index
-	end
-
 	get '/convert/' do 
 		@currencies = getAvaibleCurrencies
-		@amount = params["amount"]
+		@amount = params["amount"].to_f
 		@from = params["From"]
 		@to = params["To"]
+		if (! checkConversionParams(@amount, @from, @to)) 
+			then redirect '/' end
 		begin
-			@result = convert(@amount.to_f, @from, @to)
+			@result = convert(@amount, @from, @to)
 			@output = @amount and @from and @result and @to
 			erb :index
 		rescue
@@ -61,12 +62,11 @@ class ApplicationController < Sinatra::Base
 
 	get '/result/' do
 		@page = params['page'].to_i
-		if(@page == 0)
-			@page = 1
+		if(@page <= 0)
+			redirect 'result/?page=1'
 		end
 		@transactions = getTransactionsByPage(@page)
 		if (@transactions.empty?)
-			p 'dkhal'
 			if (@page==1)
 				return erb :result
 			end
