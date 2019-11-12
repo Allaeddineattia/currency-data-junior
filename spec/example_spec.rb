@@ -2,51 +2,50 @@ require 'spec_helper'
 
 describe 'Your application' do
 
-  it "works!" do
+  it "should render view when getting / " do
     get '/'
-    p(last_response.body)
     expect(last_response.status).to eq 200
     expect(last_response.redirect?).to be_falsy
     expect(last_response.body).to include("<div class=\"result\">")
   end
 
 
-  it "convert without params" do
+  it "should redirect to / when getting /convert/ without params" do
     get '/convert/'
     expect(last_response.redirect?).to be_truthy
     follow_redirect!
     expect(last_request.path).to eq('/')
   end
 
-  it "convert with invalide from currency " do
+  it "should redirect to / when getting /convert/ with invalide from currency " do
     get '/convert/?amount=12&From=TND&To=USD'
     expect(last_response.redirect?).to be_truthy
     follow_redirect!
     expect(last_request.path).to eq('/')
   end
 
-  it "convert with invalide amount" do
+  it "should redirect to / when getting /convert/ with invalide amount" do
     get '/convert/?amount=-12&From=EUR&To=USD'
     expect(last_response.redirect?).to be_truthy
     follow_redirect!
     expect(last_request.path).to eq('/')
   end
 
-  it "convert with invalide to currency" do
+  it "should redirect to / when getting /convert/ with invalide to currency" do
     get '/convert/?amount=-12&From=EUR&To=TND'
     expect(last_response.redirect?).to be_truthy
     follow_redirect!
     expect(last_request.path).to eq('/')
   end
 
-  it "convert with valide params" do
+  it "should render view when geting /convert/ with valide params" do
     get '/convert/?amount=1&From=EUR&To=USD'
     expect(last_response.redirect?).to be_falsy
     expect(last_response.status).to eq 200
     expect(last_response.body).to include("<div class=\"result\">")
   end
 
-  it "post " do 
+  it "should redirect to /convert/ with valide params when posting /" do 
     @amount = '1'
     @form = 'USD'
     @to = 'EUR'
@@ -54,7 +53,6 @@ describe 'Your application' do
     post '/', params
     expect(last_response.redirect?).to be_truthy
     follow_redirect!
-    p last_request.params
     expect(last_request.params["amount"]).to eq(@amount.to_f.to_s)
     expect(last_request.params["From"]).to eq(@form)
     expect(last_request.params["To"]).to eq(@to)

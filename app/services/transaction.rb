@@ -4,9 +4,6 @@ module TransactionService
     require_relative "./converter.rb"
     Transaction.auto_upgrade!
     def createTransaction (sourceCurrence, sourceValue, destinationCurrence, destinationValue)
-        p ('dkhal') 
-        p (sourceCurrence)
-        p Transaction
         @newTransaction = Transaction.new()
         @newTransaction.date = Time.now
         @newTransaction.sourceCurrence = sourceCurrence
@@ -21,7 +18,6 @@ module TransactionService
         source = Money.new(sourceValue * 100, sourceCurrence)
         destination = source.exchange_to(destinationCurrence)
         destinationValue = destination.to_f
-        p ("#{source.format} = #{destination.format}")
         createTransaction(sourceCurrence, sourceValue, destinationCurrence, destinationValue)
         return destinationValue
     end
